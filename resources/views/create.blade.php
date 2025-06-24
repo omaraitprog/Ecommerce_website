@@ -5,9 +5,19 @@
 @section('necessairy')
  <br><br><br><br>
   
+
         
   <div class="login-box">
   <h2>Login</h2>
+  @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
   <form method="post" action="{{route('store')}}">
     @csrf;
    

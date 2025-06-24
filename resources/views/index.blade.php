@@ -49,7 +49,7 @@
                         <p class="card-text mb-4">Price: <strong class="text-success">${{ $product->prix }}</strong></p>
                         <div class="mt-auto d-flex gap-2">
                             <a href="{{ route('buy', ['user' => $User->id, 'product' => $product->id]) }}" class="btn btn-success flex-fill">Buy</a>
-                            <a href="{{ route('show', $product->id) }}" class="btn btn-primary flex-fill">Show Details</a>
+                            <a href="{{ route('show', ['user' => $User->id, 'product' => $product->id]) }}" class="btn btn-primary flex-fill">Show Details</a>
                         </div>
                     </div>
                 </div>

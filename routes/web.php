@@ -27,4 +27,4 @@ Route::get('/home/create', [PostController::class, 'create'])->name('create');
 
 Route::post('/home/create/store', [PostController::class, 'store'])->name('store');
 Route::get('/index/{user}/buy/{product}', [PostController::class, 'buy'])->name('buy');
-Route::get('/index/{user}/product/show', [PostController::class, 'show'])->name('show');
+Route::get('/index/{user}/{product}/show', [PostController::class, 'show'])->name('show');

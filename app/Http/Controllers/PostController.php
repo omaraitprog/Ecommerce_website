@@ -43,6 +43,11 @@ class PostController extends Controller
 
     public function store()
     {
+        request()->validation([
+            'name' => ['required'],
+            'email' => ['required'],
+            'password' => ['required','min:8'],
+        ]);
         $User = User::create([
             'name' => request()->name,
             'email' => request()->email,
@@ -70,6 +75,8 @@ class PostController extends Controller
 
 
     public function show($product_id){
-        return 'Hello we are in show product';
+        $product=Product::find($product_id);
+        
+        return view('show',['product' => $product]);
     }
 }
