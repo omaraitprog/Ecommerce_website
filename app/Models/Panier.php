@@ -11,6 +11,11 @@ class Panier extends Model
      protected $table = 'panier'; 
     public $fillable=[
         'name',
-        'prix'
+        'prix',
+        'user_id',
+        'quantity'
     ];
+   public function user(){
+    return $this->belongsTo(User::class);
+   }
 }

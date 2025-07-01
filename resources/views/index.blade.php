@@ -40,6 +40,8 @@
         <h1 class="display-3 fw-bold mb-0">Hello Mr. {{ $User->name }}</h1>
         <p class="lead mt-2">Welcome back! Check out our latest products below.</p>
     </div>
+ <a href="{{ route('create_produit', ['user' => $User->id]) }}" class="btn btn-primary flex-fill">Create new Product</a>
+
     <div class="row g-4 justify-content-center">
         @foreach($Products as $product)
             <div class="col-md-4 col-lg-3">
@@ -50,11 +52,13 @@
                         <div class="mt-auto d-flex gap-2">
                             <a href="{{ route('buy', ['user' => $User->id, 'product' => $product->id]) }}" class="btn btn-success flex-fill">Buy</a>
                             <a href="{{ route('show', ['user' => $User->id, 'product' => $product->id]) }}" class="btn btn-primary flex-fill">Show Details</a>
+
                         </div>
                     </div>
                 </div>
             </div>
         @endforeach
+        
     </div>
 </div>
 @endsection

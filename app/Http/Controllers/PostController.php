@@ -43,11 +43,7 @@ class PostController extends Controller
 
     public function store()
     {
-        request()->validation([
-            'name' => ['required'],
-            'email' => ['required'],
-            'password' => ['required','min:8'],
-        ]);
+        
         $User = User::create([
             'name' => request()->name,
             'email' => request()->email,
@@ -63,20 +59,42 @@ class PostController extends Controller
     Panier::create([
         'name' => $product->name,
         'prix' => $product->prix,
+        'user_id' => $user_id,
+        'quantity' => 1
     ]);
-
-    $productsInCart = Panier::all();
-
+   
+    $productsInCart = Panier::all()->where('user_id',$user_id);
+     $user=User::find($user_id);
+     $quantity=Panier::all()->where('user_id',$user_id)->where('name',$product->name)->count();
+     
     return view('buy', [
         'Myproducts' => $productsInCart,
-        'user_id' => $user_id
+        'user_id' => $user_id,
+        'user' => $user,
+        'quantity' => $quantity
     ]);
 }
 
 
-    public function show($product_id){
-        $product=Product::find($product_id);
+    public function show($user,$product){
+        $product=Product::find($product);
         
-        return view('show',['product' => $product]);
+        return view('show',['user' => $user,'product' => $product]);
     }
+    public function create_produit( User $user){
+
+        return view('create_produit',['user' => $user]);
+    }
+    public function store_newproduit(User $user){
+        $name=request()->name;
+         $description=request()->description;
+          $Prix=request()->Prix;
+          Product::create([
+            'name' => $name,
+            'description'=> $description,
+            'Prix' => $Prix
+          ]);
+          return to_route('index',['user' => $user]);
+    }
+
 }

@@ -118,8 +118,12 @@
                     <th colspan="2">{{ $product->name }}</th>
                 </tr>
                 <tr>
+                    <th colspan="2">Demandé par le client : {{ $user->name}}</th>
+                </tr>
+                <tr>
                     <td>Price</td>
                     <td>${{ number_format($product->prix, 2) }}</td>
+                    <td>Quantity : {{ $quantity }}</td>
                 </tr>
             </table>
         </div>

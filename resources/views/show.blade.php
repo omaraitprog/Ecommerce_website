@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ $product->name }}</title>
+    <title>show</title>
     <style>
         body {
             min-height: 100vh;
@@ -110,11 +110,15 @@
             </svg>
         </div>
         <div class="card-content">
-            <h1 class="card-title">{{ $product->name }}</h1>
+            <!--<h1 class="card-title">{{ $product->name }}</h1>-->
             <p class="card-desc">{{ $product->description }}</p>
             <div class="card-footer">
                 <span class="card-price">{{ number_format($product->prix, 2) }} €</span>
-                <button class="buy-btn" id="buyBtn" >Acheter</button>
+                @php
+                    
+                @endphp
+                <a href="{{route('buy',['user' => $user,'product' => $product])}}"><button class="buy-btn" id="buyBtn" >Acheter</button></a>
+                
             </div>
         </div>
     </div>

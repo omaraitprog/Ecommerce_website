@@ -26,5 +26,9 @@ Route::post('/home/verify', [PostController::class, 'verify'])->name('verify');
 Route::get('/home/create', [PostController::class, 'create'])->name('create');
 
 Route::post('/home/create/store', [PostController::class, 'store'])->name('store');
+
+Route::post('/index/{user}/create/store', [PostController::class, 'store_newproduit'])->name('store_newproduit');
+
 Route::get('/index/{user}/buy/{product}', [PostController::class, 'buy'])->name('buy');
+Route::get('/index/{user}/create', [PostController::class, 'create_produit'])->name('create_produit');
 Route::get('/index/{user}/{product}/show', [PostController::class, 'show'])->name('show');
